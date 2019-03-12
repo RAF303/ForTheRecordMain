@@ -10,7 +10,7 @@ class AddExerience extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			company: "",
+			band: "",
 			title: "",
 			location: "",
 			from: "",
@@ -35,7 +35,7 @@ class AddExerience extends Component {
 		e.preventDefault();
 
 		const expData = {
-			company: this.state.company,
+			band: this.state.band,
 			title: this.state.title,
 			location: this.state.location,
 			from: this.state.from,
@@ -70,19 +70,19 @@ class AddExerience extends Component {
 								Go Back
 							</Link>
 							<h1 className="display-4 text-center">Add experinece</h1>
-							<p className="lead text-center">Add any job or position</p>
+							<p className="lead text-center">Add any Band you've been a part of</p>
 							<small className="d-block pb-3"> * = required fields</small>
 							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
-									placeholder="* Company"
-									name="company"
-									value={this.state.company}
+									placeholder="* Band"
+									name="band"
+									value={this.state.band}
 									onChange={this.onChange}
-									error={errors.company}
+									error={errors.band}
 								/>
 
 								<TextFieldGroup
-									placeholder="* Job Title"
+									placeholder="* Band position"
 									name="title"
 									value={this.state.title}
 									onChange={this.onChange}
@@ -131,11 +131,11 @@ class AddExerience extends Component {
 										id="current"
 									/>
 									<label htmlFor="current" className="from-check-label">
-										Current Job
+										Current Gig
 									</label>
 								</div>
 								<TextAreaFieldGroup
-									placeholder="Job Description"
+									placeholder="Description"
 									name="description"
 									value={this.state.description}
 									onChange={this.onChange}
