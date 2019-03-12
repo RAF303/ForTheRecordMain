@@ -18,18 +18,19 @@ import { clearCurrentProfile } from '../../actions/profileActions';
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-            <Link className="nav-link" to="/dashboard"> Dashboard </Link>
-          </li>
-          <li className="nav-item">
-            <a href= "" onClick={this.onLogoutClick.bind(this)} className= "nav-link"> 
-            <img 
+        <img 
               className= "rounded-circle"
               src= {user.avatar} 
               alt={user.name} 
               style={{ width: '25px', marginRight: '5px' }} 
-              title= "You must have gravatar for image"/> 
+              title= "You must have gravatar for image"
+              /> 
+          <button
+            type="button"
+            className="link-button nav-link"
+            onClick={this.onLogoutClick.bind(this)}>
             Logout
-            </a>
+             </button>
           </li>
         </ul>
     );
@@ -48,7 +49,7 @@ import { clearCurrentProfile } from '../../actions/profileActions';
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
     <div className="container">
-      <Link className="navbar-brand" to="/">Band Finder</Link>
+      <Link className="navbar-brand" to="/">For the Record</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -69,7 +70,7 @@ import { clearCurrentProfile } from '../../actions/profileActions';
   }
 }
 
-Navbar.PropTypes = {
+Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 }

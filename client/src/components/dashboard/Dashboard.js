@@ -31,6 +31,7 @@ onDeleteClick(e){
              Welcome  
               <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
+            {/* Put Profile Info Here Maybe Seperate Component */}
             <ProfileActions />
             {/*TODO: exp and edu */}
             <div style={{ marginBottom: '60px' }} />

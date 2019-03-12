@@ -15,6 +15,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  // might not be needed later on 
   avatar: {
     type: String,
     required: true
