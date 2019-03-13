@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atstay/DevConnector.git"
+    "url": "git+https://github.com/RAF303/ForTheRecordManin.git"
   },
   "author": "Anthony Tran-Son-Tay",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/atstay/DevConnector/issues"
+    "url": "https://github.com/RAF303/ForTheRecordManin/issues"
   },
-  "homepage": "https://github.com/atstay/DevConnector#readme",
+  "homepage": "https://github.com/RAF303/ForTheRecordManin#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",

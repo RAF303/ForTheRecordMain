@@ -5,11 +5,32 @@ import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../common/Spinner'
 import ProfileActions from './ProfileActions'
+import Card from '../Card/Card'
+import Container from '../Card/Container'
+import Axios from 'axios';
  
 class Dashboard extends Component {
+
+  state={
+    users: []
+  }
 componentDidMount(){
+  
+
     this.props.getCurrentProfile();
+    Axios.get("api/profile/all")
+    .then( (res)=> {
+      let users=[];
+      res.data.map( item =>{
+        users.push(item)
+      })
+      this.setState({
+        users
+      });
+    });
 }
+
+
 
 onDeleteClick(e){
   this.props.deleteAccount();
@@ -17,6 +38,7 @@ onDeleteClick(e){
   render() {
     const { user } =  this.props.auth;
     const {profile, loading } = this.props.profile;
+    const users = this.state.users;
 
     let dashboardContent;
 
@@ -31,9 +53,15 @@ onDeleteClick(e){
              Welcome  
               <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
-            {/* Put Profile Info Here Maybe Seperate Component */}
+            <div>
+            <Container >
+                {users.map((user, i, users) => {
+                  // console.log(user[i].bio)
+                  console.log(users[i].status2)
+                })}
+            </Container>
+            </div>
             <ProfileActions />
-            {/*TODO: exp and edu */}
             <div style={{ marginBottom: '60px' }} />
             <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger">Delete My Account</button>
           </div>

@@ -21,10 +21,12 @@ const ProfileSchema = new Schema({
   location: {
     type: String
   },
+  // what you play
   status: {
     type: String,
     required: true
   },
+  // what your looking for
   status2: {
     type: String,
     required: true
