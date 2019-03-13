@@ -57,7 +57,9 @@ onDeleteClick(e){
             <Container >
                 {users.map((user, i, users) => {
                   // console.log(user[i].bio)
-                  console.log(users[i].status2)
+                  console.log(user.status2)
+                  console.log("===========")
+                  return <Card key={i} name={user.user.name} status={user.status} />
                 })}
             </Container>
             </div>
