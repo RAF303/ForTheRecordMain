@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/authActions';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 
-import { Provider } from 'react-redux';
-import store from './store';
+import { Provider } from "react-redux";
+import store from "./store";
 
-import PrivateRoute from './components/common/PrivateRoute';
+import PrivateRoute from "./components/common/PrivateRoute";
+
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -21,36 +22,36 @@ import AddExperience from './components/add-credentials/AddExperience';
 import Posts from './components/posts/Posts'
 import Post from './components/post/Post'
 
-import './App.css';
-import { clearCurrentProfile } from './actions/profileActions';
+
+import "./App.css";
+import { clearCurrentProfile } from "./actions/profileActions";
 
 // check for token
-if(localStorage.jwtToken){
+if (localStorage.jwtToken) {
   // set auth token header auth
   setAuthToken(localStorage.jwtToken);
   // decode token and fet user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
-  // set user and is authenticated 
+  // set user and is authenticated
   store.dispatch(setCurrentUser(decoded));
 
   // check for expired token
   const currentTime = Date.now() / 1000;
-  if(decoded.exp < currentTime) {
+  if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
     // clear currnet Profile
     store.dispatch(clearCurrentProfile());
     // Redirect to login
-    window.location.href = '/login';
-
+    window.location.href = "/login";
   }
 }
 
 class App extends Component {
   render() {
     return (
-      <Provider store={ store }>
-        <Router>
+      <Provider store={store}>
+       
         <div className="App">
           <Navbar/>
           <Route exact path="/" component={ Landing } />
@@ -75,9 +76,8 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/post/:id" component={ Post } />
             </Switch>
+=
           </div>
-          <Footer/>
-        </div>
         </Router>
       </Provider>
     );
