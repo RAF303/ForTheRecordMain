@@ -11,20 +11,26 @@ class Navbar extends Component {
     this.props.clearCurrentProfile();
     this.props.logoutUser();
   }
-
+// Need help fixing prob
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <img
-            className="rounded-circle"
-            src={user.avatar}
-            alt={user.name}
-            style={{ width: "25px", marginRight: "5px" }}
-            title="You must have gravatar for image"
-          />
+
+          <Link className="nav-link" to= "/feed">
+            Post Feed
+          </Link>
+
+        <img 
+              className= "rounded-circle"
+              src= {user.avatar} 
+              alt={user.name} 
+              style={{ width: '25px', marginRight: '5px' }} 
+              title= "You must have gravatar for image"
+              /> 
+
           <button
             type="button"
             className="link-button nav-link"

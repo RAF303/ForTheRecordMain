@@ -15,8 +15,6 @@ class Dashboard extends Component {
     users: []
   }
 componentDidMount(){
-  
-
     this.props.getCurrentProfile();
     Axios.get("api/profile/all")
     .then( (res)=> {
