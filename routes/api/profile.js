@@ -144,7 +144,7 @@ router.post(
           { user: req.user.id },
           { $set: profileFields },
           { new: true }
-        ).then(profile => resjson(profile));
+        ).then(profile => res.json(profile));
       } else {
         // Create
 
