@@ -21,6 +21,7 @@ import AddExperience from "./components/add-credentials/AddExperience";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
 import Profiles from "./components/profiles/Profiles";
+import Search from "./components/Search/Search";
 
 import "./App.css";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -59,6 +60,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/search" component={Search} />
               </Switch>
               <Switch>
                 <PrivateRoute
