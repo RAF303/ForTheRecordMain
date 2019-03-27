@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/RAF303/ForTheRecordManin#readme",
   "dependencies": {
+    "all": "0.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
