@@ -1,42 +1,45 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
-import Spinner from "../common/Spinner";
-// import ProfileActions from "./ProfileActions";
-import Card from "../Card/Card";
-import Container from "../Card/Container";
-import Axios from "axios";
+import { Link } from "react-router-dom";
+import isEmpty from "../../validation/is-empty";
 
-class Profileitem extends Component {
-  componentDidMount() {
-    this.props.getProfiles();
-  }
+class ProfileItem extends Component {
   render() {
-    const { profiles, loading } = this.props.profile;
-    let profileItems;
+    const { profile } = this.props;
 
-    if (profiles === null || loading) {
-      profileItems = <Spinner />;
-    } else {
-      if (profiles.length > 0) {
-        <h1>WELCOME TO THE SHIT EATING CLUB</h1>;
-      } else {
-        profileItems = <h4>No profiles found...</h4>;
-      }
-    }
     return (
-      <div className="profiles">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Developer Profiles</h1>
-              <p className="lead text-center">
-                Browse and connect with musicians and artists
-              </p>
-              {profileItems}
-            </div>
+      <div className="card card-body bg-light mb-3">
+        <div className="row">
+          <div className="col-2">
+            <img src={profile.user.avatar} alt="" className="rounded-circle" />
+          </div>
+          <div className="col-lg-6 col-md-4 col-8">
+            <h3>{profile.user.name}</h3>
+            <p>
+              {profile.status}{" "}
+              {isEmpty(profile.company) ? null : (
+                <span>at {profile.company}</span>
+              )}
+            </p>
+            <p>
+              {isEmpty(profile.location) ? null : (
+                <span>{profile.location}</span>
+              )}
+            </p>
+            <Link to={`/profile/${profile.handle}`} className="btn btn-info">
+              View Profile
+            </Link>
+          </div>
+          <div className="col-md-4 d-none d-md-block">
+            <h4>Skill Set</h4>
+            <ul className="list-group">
+              {profile.skills.slice(0, 4).map((skill, index) => (
+                <li key={index} className="list-group-item">
+                  <i className="fa fa-check pr-1" />
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
@@ -44,16 +47,8 @@ class Profileitem extends Component {
   }
 }
 
-Profiles.propTypes = {
-  getProfiles: PropTypes.func.isRequired,
+ProfileItem.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile
-});
-
-export default connect(
-  null,
-  { getProfiles }
-)(Profiles);
+export default ProfileItem;

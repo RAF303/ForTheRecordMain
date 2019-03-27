@@ -21,6 +21,7 @@ import AddExperience from "./components/add-credentials/AddExperience";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
 import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 import Search from "./components/Search/Search";
 
 import "./App.css";
@@ -80,6 +81,13 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/profile/:handle"
+                  component={Profile}
+                />
               </Switch>
               <Switch>
                 <PrivateRoute
