@@ -53,7 +53,7 @@ class Search extends Component {
           name="search"
           value={this.state.search}
           onChange={this.onChange}
-          info="instructions"
+          info="Search for instrument(s)"
         />
         <button onClick={this.onClick}>Search</button>
         <SearchResultsContainer>
@@ -73,12 +73,3 @@ class Search extends Component {
 }
 
 export default Search;
-
-{
-  /* <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-  </div>
-</div> */
-}
