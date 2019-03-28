@@ -26,7 +26,7 @@ const ProfileSchema = new Schema({
     type: String,
     required: true
   },
-  // what your looking for
+  // what you're looking for
   status2: {
     type: String,
     required: true
