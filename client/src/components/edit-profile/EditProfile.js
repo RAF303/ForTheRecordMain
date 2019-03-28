@@ -117,10 +117,10 @@ class CreateProfile extends Component {
   render() {
     const { errors, displaySocialInputs } = this.state;
 
-    let SocialInputs;
+    let socialInputs;
 
     if (displaySocialInputs) {
-      SocialInputs = (
+      socialInputs = (
         <div>
           <InputGroup
             placeholder="Twitter Profile URL"
@@ -278,9 +278,9 @@ class CreateProfile extends Component {
                   >
                     Add Social Media links
                   </button>
-                  <span className="text-muted">Optinal</span>
+                  <span className="text-muted">Optional</span>
                 </div>
-                {SocialInputs}
+                {socialInputs}
                 <input
                   type="submit"
                   value="Submit"

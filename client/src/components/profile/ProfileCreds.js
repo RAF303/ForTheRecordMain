@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import Datepicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 
 class ProfileCreds extends Component {
   render() {
-    const { experience, education } = this.props;
+    const { experience } = this.props;
 
     const expItems = experience.map(exp => (
       <li key={exp._id} className="list-group-item">
         <h4>{exp.company}</h4>
         <p>
-          <Datepicker format="YYYY/MM/DD">{exp.from}</Datepicker> -
+          <DatePicker dateFormat="YYYY/MM/DD">{exp.from}</DatePicker> -
           {exp.to === null ? (
             " Now"
           ) : (
-            <Datepicker format="YYYY/MM/DD">{exp.to}</Datepicker>
+            <DatePicker dateFormat="YYYY/MM/DD">{exp.to}</DatePicker>
           )}
         </p>
         <p>
