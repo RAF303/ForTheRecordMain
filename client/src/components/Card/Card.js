@@ -8,8 +8,8 @@ export default function Card(props) {
         src="https://via.placeholder.com/286x180"
         alt="Card image cap"
       /> */}
-      <p>{props.name}</p>
-      <p>{props.instrument}</p>
+      {/* <p>{props.name}</p>
+      <p>{props.instrument}</p> */}
     </div>
   );
 }
