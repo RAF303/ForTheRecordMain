@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
 
 class ProfileCreds extends Component {
   render() {
@@ -7,15 +6,6 @@ class ProfileCreds extends Component {
 
     const expItems = experience.map(exp => (
       <li key={exp._id} className="list-group-item">
-        <h4>{exp.company}</h4>
-        <p>
-          <DatePicker dateFormat="YYYY/MM/DD">{exp.from}</DatePicker> -
-          {exp.to === null ? (
-            " Now"
-          ) : (
-            <DatePicker dateFormat="YYYY/MM/DD">{exp.to}</DatePicker>
-          )}
-        </p>
         <p>
           <strong>Position:</strong> {exp.title}
         </p>

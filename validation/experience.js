@@ -6,7 +6,6 @@ module.exports = function validateExperienceInput(data) {
 
   data.band = !isEmpty(data.band) ? data.band : "";
   data.title = !isEmpty(data.title) ? data.title : "";
-  data.from = !isEmpty(data.from) ? data.from : "";
 
   if (Validator.isEmpty(data.title)) {
     errors.title = "Job title field is required";
@@ -16,9 +15,6 @@ module.exports = function validateExperienceInput(data) {
     errors.band = "band field is required";
   }
 
-  if (Validator.isEmpty(data.from)) {
-    errors.from = "From date field is required";
-  }
 
   return {
     errors,

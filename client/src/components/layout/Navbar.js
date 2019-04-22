@@ -86,6 +86,12 @@ class Navbar extends Component {
                   Search
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  {" "}
+                  About
+                </Link>
+              </li>
             </ul>
             {isAuthenticated ? authLinks : guestLinks}
           </div>

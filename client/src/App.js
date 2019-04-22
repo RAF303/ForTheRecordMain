@@ -23,6 +23,7 @@ import Post from "./components/post/Post";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Search from "./components/Search/Search";
+import About from "./components/About/About"
 
 import "./App.css";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -59,9 +60,12 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/about" component={About} />
+
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
+
               <Switch>
                 <PrivateRoute
                   exact
@@ -69,9 +73,11 @@ class App extends Component {
                   component={CreateProfile}
                 />
               </Switch>
+
               <Switch>
                 <PrivateRoute exact path="/search" component={Search} />
               </Switch>
+
               <Switch>
                 <PrivateRoute
                   exact
@@ -79,9 +85,11 @@ class App extends Component {
                   component={EditProfile}
                 />
               </Switch>
+
               <Switch>
                 <PrivateRoute exact path="/profiles" component={Profiles} />
               </Switch>
+
               <Switch>
                 <PrivateRoute
                   exact
@@ -89,6 +97,7 @@ class App extends Component {
                   component={Profile}
                 />
               </Switch>
+
               <Switch>
                 <PrivateRoute
                   exact
@@ -96,12 +105,15 @@ class App extends Component {
                   component={AddExperience}
                 />
               </Switch>
+
               <Switch>
                 <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>
+
               <Switch>
                 <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
+
             </div>
             <Footer />
           </div>

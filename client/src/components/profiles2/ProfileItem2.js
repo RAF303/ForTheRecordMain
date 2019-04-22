@@ -12,12 +12,6 @@ const ProfileItem2 =(props) => {
       <div className="col-lg-6 col-md-4 col-8">
         <h3>{props.name}</h3>
         <p>
-          {props.status}{" "}
-          {isEmpty(props.company) ? null : (
-            <span>at {props.company}</span>
-          )}
-        </p>
-        <p>
           {isEmpty(props.location) ? null : (
             <span>{props.location}</span>
           )}

@@ -184,8 +184,6 @@ router.post(
         title: req.body.title,
         band: req.body.band,
         location: req.body.location,
-        from: req.body.from,
-        to: req.body.to,
         current: req.body.current,
         description: req.body.description
       };

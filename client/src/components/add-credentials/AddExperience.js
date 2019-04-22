@@ -13,8 +13,6 @@ class AddExerience extends Component {
 			band: "",
 			title: "",
 			location: "",
-			from: "",
-			to: "",
 			current: false,
 			description: "",
 			errors: {},
@@ -38,8 +36,6 @@ class AddExerience extends Component {
 			band: this.state.band,
 			title: this.state.title,
 			location: this.state.location,
-			from: this.state.from,
-			to: this.state.to,
 			current: this.state.current,
 			description: this.state.description
 		};
@@ -95,29 +91,6 @@ class AddExerience extends Component {
 									value={this.state.location}
 									onChange={this.onChange}
 									error={errors.location}
-								/>
-
-								<h6>From Date</h6>
-
-								<TextFieldGroup
-									placeholder="from"
-									name="from"
-									type="date"
-									value={this.state.from}
-									onChange={this.onChange}
-									error={errors.from}
-								/>
-
-								<h6>To Date</h6>
-
-								<TextFieldGroup
-									placeholder="to"
-									name="to"
-									type="date"
-									value={this.state.to}
-									onChange={this.onChange}
-									error={errors.to}
-									disabled={this.state.disabled ? "disabled" : ""}
 								/>
 
 								<div className="from-check mb-4">

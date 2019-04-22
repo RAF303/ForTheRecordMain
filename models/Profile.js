@@ -12,9 +12,6 @@ const ProfileSchema = new Schema({
     required: true,
     max: 40
   },
-  company: {
-    type: String
-  },
   website: {
     type: String
   },
@@ -51,13 +48,6 @@ const ProfileSchema = new Schema({
       },
       location: {
         type: String
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date
       },
       current: {
         type: Boolean,

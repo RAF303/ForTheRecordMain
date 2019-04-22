@@ -5,11 +5,8 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
-import Card from "../Card/Card";
 import Container from "../Card/Container";
 import Axios from "axios";
-import PostForm from "../posts/PostForm";
-import PostFeed from "../post/CommentFeed";
 import Posts from "../posts/Posts";
 import { getPosts } from "../../actions/postActions";
 
@@ -37,11 +34,11 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
-    const posts = this.props.post;
-    const users = this.state.users;
+    // const posts = this.props.post;
+    // const users = this.state.users;
 
     let dashboardContent;
-    let postContent;
+    // let postContent;
 
     if (profile === null || loading) {
       dashboardContent = <Spinner />;
@@ -51,7 +48,7 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <p className="lead text-muted">
-              Welcome
+              Welcome;
               <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <div>

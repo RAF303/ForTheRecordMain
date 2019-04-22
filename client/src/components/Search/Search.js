@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import TextFieldGroup from "../common/TextFieldGroup";
 import SearchResultsContainer from "../SearchResultsContainer/SearchResultsContainer";
-import Card from "../Card/Card";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ProfileItem2 from "../profiles2/ProfileItem2";
 import { getCurrentProfile} from '../../actions/profileActions'
-import Profile from '../profile/Profile'
 
 class Search extends Component {
   state = {
@@ -70,30 +68,9 @@ class Search extends Component {
         results.push(user);
       }
     });
-
-    // this.setState({
-    //   results: matches
-    // });
-    // e.preventDefault();
-    const {profile} = this.props.profile;
-    console.log(this.state.users);
-    // console.log('user', user);
-    // console.log('search', search);
-    // console.log('results', results);
-    // console.log(profile);
-
-    
-
-    // const matche= {
-    //   instrument : user.status,
-    // }
   };
 
-  render() {
-    // const { user } = this.props.auth;
-    // const { profile } = this.props.profile;
-    const {name, location, skills, instrument } = this.state.profileInfo;
-    
+  render() {    
     return (
       <div>
         <TextFieldGroup
@@ -117,7 +94,6 @@ class Search extends Component {
 Search.propTypes = {
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
