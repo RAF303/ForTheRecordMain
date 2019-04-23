@@ -7,12 +7,13 @@ import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
 import Container from "../Card/Container";
 import Axios from "axios";
-import Posts from "../posts/Posts";
+import PostFeed from "../posts/PostFeed";
 import { getPosts } from "../../actions/postActions";
 
 class Dashboard extends Component {
   state = {
-    users: []
+    users: [],
+    posts: []
   };
   componentDidMount() {
     this.props.getPosts();
@@ -26,8 +27,28 @@ class Dashboard extends Component {
         users
       });
     });
+    Axios.get("api/posts")
+    .then(res => {
+      let posts = [];
+      res.data.map(post =>{
+        post.likes.map(like => {
+          const loggedIn = this.props.auth.user.id;
+          
+          if(like.user === loggedIn){
+          posts.push(post)
+            console.log("posts",posts)
+          }
+        })
+        
+      })
+      this.setState({
+        posts
+      })
+      console.log("this.state.post",this.state) 
+    })
+    
   }
-
+  
   onDeleteClick(e) {
     this.props.deleteAccount();
   }
@@ -59,7 +80,7 @@ class Dashboard extends Component {
                   console.log("===========")
                   return <Card key={i} name={user.user.name} status={user.status} />
                 })} */}
-                <Posts />
+                <PostFeed posts={this.state.posts} />
               </Container>
             </div>
             <ProfileActions />
