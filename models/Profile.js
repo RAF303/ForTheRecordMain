@@ -32,6 +32,12 @@ const ProfileSchema = new Schema({
     type: [String],
     required: true
   },
+  followng: {
+    type: [String]
+  },
+  followers: {
+    type: [String]
+  },
   bio: {
     type: String
   },

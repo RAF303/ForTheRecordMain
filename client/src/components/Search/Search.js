@@ -5,7 +5,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ProfileItem2 from "../profiles2/ProfileItem2";
-import { getCurrentProfile} from '../../actions/profileActions'
+import { getCurrentProfile } from "../../actions/profileActions";
 
 class Search extends Component {
   state = {
@@ -41,36 +41,33 @@ class Search extends Component {
 
   onClick = e => {
     let { users, search, results } = this.state;
-  
+
     e.preventDefault();
 
     users.map((user, i) => {
       if (user.status.toLowerCase() == search.toLowerCase()) {
-    let name, location, skills, instrument;
+        let name, location, skills, instrument;
 
-    name = user.user.name;
-    location = user.location;
-    skills = user.skills;
-    instrument = user.status;
+        name = user.user.name;
+        location = user.location;
+        skills = user.skills;
+        instrument = user.status;
 
-    console.log(name, location, skills, instrument);
+        this.setState({
+          profileInfo: {
+            name,
+            location,
+            skills,
+            instrument
+          }
+        });
 
-    this.setState({
-      profileInfo: {
-        name,
-        location,
-        skills,
-        instrument
-      }
-    });
-
-    console.log(this.state.profileInfo)
         results.push(user);
       }
     });
   };
 
-  render() {    
+  render() {
     return (
       <div>
         <TextFieldGroup
@@ -83,7 +80,15 @@ class Search extends Component {
         <button onClick={this.onClick}>Search</button>
         <SearchResultsContainer>
           {this.state.results.map((result, i) => {
-            return <ProfileItem2 avatar={"avatar"} name={result.user.name} skills={result.skills} location={result.location} key={i}/>;
+            return (
+              <ProfileItem2
+                avatar={"avatar"}
+                name={result.user.name}
+                skills={result.skills}
+                location={result.location}
+                key={i}
+              />
+            );
           })}
         </SearchResultsContainer>
       </div>
@@ -93,7 +98,7 @@ class Search extends Component {
 
 Search.propTypes = {
   profile: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -101,4 +106,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {getCurrentProfile})(Search);
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile }
+)(Search);

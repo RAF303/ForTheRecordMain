@@ -22,12 +22,72 @@ class Profile extends Component {
     }
   }
 
+  followUser = e => {
+    e.preventDefault();
+    const profileID = this.props.profile.profile.user._id;
+    const userID = this.props.user.user.id;
+    const profileFollowers = this.props.profile.profile.followers;
+
+    // Add profile to user's following array
+    if (profileFollowers.includes(userID) === false) {
+      profileFollowers.push(userID);
+      console.log("user added to profile followers array:", profileFollowers);
+    }
+  };
+
+  unfollowUser = e => {
+    e.preventDefault();
+    const profileID = this.props.profile.profile.user._id;
+    const userID = this.props.user.user.id;
+    const profileFollowers = this.props.profile.profile.followers;
+
+    // Remove profile from user's following array
+    for (var i = 0; i < profileFollowers.length; i++) {
+      if (profileFollowers[i] === userID) {
+        profileFollowers.splice(i, 1);
+        console.log("user unfollowed.", profileFollowers);
+      }
+    }
+  };
+
   render() {
     const { profile, loading } = this.props.profile;
+    console.log("profile props :", this.props);
     let profileContent;
 
     if (profile === null || loading) {
       profileContent = <Spinner />;
+    } else if (
+      this.props.profile.profile.followers.indexOf(this.props.user.user._id) ===
+      true
+    ) {
+      profileContent = (
+        <div>
+          <div className="row">
+            <div className="col-md-6">
+              <Link to="/profiles" className="btn btn-light mb-3 float-left">
+                Back To Profiles
+              </Link>
+              <button
+                onClick={this.unfollowUser}
+                className="btn btn-light mb-3 float-left"
+              >
+                Unfollow
+              </button>
+            </div>
+            <div className="col-md-6" />
+          </div>
+          <ProfileHeader profile={profile} />
+          <ProfileAbout profile={profile} />
+          <ProfileCreds
+            education={profile.education}
+            experience={profile.experience}
+          />
+          {profile.githubusername ? (
+            <ProfileGithub username={profile.githubusername} />
+          ) : null}
+        </div>
+      );
     } else {
       profileContent = (
         <div>
@@ -36,6 +96,12 @@ class Profile extends Component {
               <Link to="/profiles" className="btn btn-light mb-3 float-left">
                 Back To Profiles
               </Link>
+              <button
+                onClick={this.followUser}
+                className="btn btn-light mb-3 float-left"
+              >
+                Follow
+              </button>
             </div>
             <div className="col-md-6" />
           </div>
@@ -70,7 +136,8 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  user: state.auth
 });
 
 export default connect(
