@@ -13,7 +13,8 @@ import { getPosts } from "../../actions/postActions";
 class Dashboard extends Component {
   state = {
     users: [],
-    posts: []
+    posts: [],
+    followers: []
   };
   componentDidMount() {
     this.props.getPosts();
@@ -27,28 +28,23 @@ class Dashboard extends Component {
         users
       });
     });
-    Axios.get("api/posts")
-    .then(res => {
+    Axios.get("api/posts").then(res => {
       let posts = [];
-      res.data.map(post =>{
+      res.data.map(post => {
         post.likes.map(like => {
           const loggedIn = this.props.auth.user.id;
-          
-          if(like.user === loggedIn){
-          posts.push(post)
-            console.log("posts",posts)
+
+          if (like.user === loggedIn) {
+            posts.push(post);
           }
-        })
-        
-      })
+        });
+      });
       this.setState({
         posts
-      })
-      console.log("this.state.post",this.state) 
-    })
-    
+      });
+    });
   }
-  
+
   onDeleteClick(e) {
     this.props.deleteAccount();
   }
