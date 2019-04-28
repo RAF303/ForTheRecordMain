@@ -196,6 +196,39 @@ router.post(
   }
 );
 
+// @route   POST api/profile/experience
+// @desc    Add followers
+// @access Private
+router.post(
+  "followers",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateExperienceInput(req.body);
+
+    // Check Validation
+
+    if (!isValid) {
+      //Return any errors with 400 status
+      return res.status(400).json(errors);
+    }
+
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const newExp = {
+        title: req.body.title,
+        band: req.body.band,
+        location: req.body.location,
+        current: req.body.current,
+        description: req.body.description
+      };
+
+      // Add to exp array
+      profile.experience.unshift(newExp);
+
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
 // @route   POST api/profile/education
 // @desc    Add education to profile
 // @access Private
@@ -254,30 +287,6 @@ router.delete(
       .catch(err => res.status(404).json(err));
   }
 );
-
-// @route   DELETE api/profile/education/:edu_id
-// @desc    Delete education from profile
-// @access Private
-// router.delete(
-//   "/education/:edu_id",
-//   passport.authenticate("jwt", { session: false }),
-//   (req, res) => {
-//     Profile.findOne({ user: req.user.id })
-//       .then(profile => {
-//         // Get remove index
-//         const removeIndex = profile.education
-//           .map(item => item.id)
-//           .indexOf(req.params.edu_id);
-
-//         // Splice out of array
-//         profile.education.splice(removeIndex, 1);
-
-//         //Save
-//         profile.save().then(profile => res.json(profile));
-//       })
-//       .catch(err => res.status(404).json(err));
-//   }
-// );
 
 // @route   DELETE api/profile
 // @desc    Delete user and profile
