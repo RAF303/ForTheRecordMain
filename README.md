@@ -1,4 +1,4 @@
-#For The Record
+#For The Record#
 
 This app was created to help musicians connect in an easy convenient way. As a musician it is difficult to find people to play with so this app was developed to connects musicians who are looking to collab, jam or even perform a event together.
 
