@@ -27,6 +27,7 @@ router.get('/', (req,res) => {
   .catch(err => 
     res.status(404).json({ nopostsfound: ' No post found ' }))
 });
+
 // @route   POST api/posts/:id
 // @desc    get post by id
 // @access  public
@@ -102,7 +103,6 @@ router.post('/like/:id', passport.authenticate('jwt', {session: false}), (req,re
       }
       // add user id to likes array
       post.likes.unshift({ user: req.user.id });
-
       post.save().then(post => res.json(post));
     })
     .catch(err => res.status(404).json({ postnotfound: 'no post found'}))

@@ -11,4 +11,8 @@ export const GET_POSTS = "GET_POSTS";
 export const GET_POST = "GET_POST";
 export const ADD_POST = "ADD_POST";
 export const DELETE_POST = "DELETE_POST";
+export const  FOLLOW_USER = "FOLLOW_USER";
+export const  UNFOLLOW_USER = "UNFOLLOW_USER";
+export const  GET_FOLLOWERS = "GET_FOLLOWERS";
+export const  ADD_FOLLOWER = "ADD_FOLLOWER";
 

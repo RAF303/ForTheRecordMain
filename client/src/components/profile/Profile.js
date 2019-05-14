@@ -8,6 +8,7 @@ import ProfileCreds from "./ProfileCreds";
 import ProfileGithub from "./ProfileGithub";
 import Spinner from "../common/Spinner";
 import { getProfileByHandle } from "../../actions/profileActions";
+import { getFollowers } from '../../actions/followActions';
 
 class Profile extends Component {
   componentDidMount() {
@@ -33,6 +34,14 @@ class Profile extends Component {
       profileFollowers.push(userID);
       console.log("user added to profile followers array:", profileFollowers);
     }
+
+    const followerData = {
+      profileID,
+      profileFollowers,
+      userID
+    };
+
+    this.props.getFollowers(profileID);
   };
 
   unfollowUser = e => {
@@ -132,6 +141,7 @@ class Profile extends Component {
 
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
+  getFollowers: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -142,5 +152,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfileByHandle }
+  { getProfileByHandle, getFollowers }
 )(Profile);

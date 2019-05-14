@@ -65,17 +65,14 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <p className="lead text-muted">
-              Welcome;
-              <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+              Welcome 
+               <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            </p>
+            <p>
+              Post you've liked
             </p>
             <div>
               <Container>
-                {/* {users.map((user, i, users) => {
-                  // console.log(user[i].bio)
-                  console.log(user.status2)
-                  console.log("===========")
-                  return <Card key={i} name={user.user.name} status={user.status} />
-                })} */}
                 <PostFeed posts={this.state.posts} />
               </Container>
             </div>
