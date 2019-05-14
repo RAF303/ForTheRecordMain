@@ -36,7 +36,7 @@ export const addFollower = followerData => dispatch => {
 //GET Followers
 export const getFollowers = () => dispatch => {
     axios
-        .get('/api/profile/followers')
+        .get('/api/profile')
         .then(res => 
             dispatch({
                 type: GET_FOLLOWERS,
@@ -54,7 +54,7 @@ export const getFollowers = () => dispatch => {
 // Follow a user
 export const follow= id => dispatch =>{
     axios
-        .post(`/api/profile/followers`)
+        .post(`/api/profile/follow/${id}`)
         .then(res=> 
             dispatch(getFollowers()))
          .catch(err =>
